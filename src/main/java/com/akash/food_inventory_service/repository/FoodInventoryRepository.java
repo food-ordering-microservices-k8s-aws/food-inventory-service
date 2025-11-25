@@ -12,5 +12,5 @@ import java.util.List;
  */
 @Repository
 public interface FoodInventoryRepository extends JpaRepository<FoodInventory, Long> {
-    List<FoodInventory> findByRestaurantId(Integer restaurantId);
+    List<FoodInventory> findByRestaurantId(Long restaurantId);
 }

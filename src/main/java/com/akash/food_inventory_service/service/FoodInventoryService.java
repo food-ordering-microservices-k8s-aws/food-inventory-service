@@ -35,11 +35,11 @@ public class FoodInventoryService {
         return FoodInventoryMapper.INSTANCE.mapFoodInventoryToFoodInventoryDto(foodItemSavedInDB);
     }
 
-    private List<FoodInventory> findFoodInventoryList(Integer restaurantId) {
+    private List<FoodInventory> findFoodInventoryList(Long restaurantId) {
         return foodInventoryRepository.findByRestaurantId(restaurantId);
     }
 
-    public FoodInventoryPage findFoodInventoryPageDetails(Integer restaurantId) {
+    public FoodInventoryPage findFoodInventoryPageDetails(Long restaurantId) {
         List<FoodInventory> foodInventoryList =  findFoodInventoryList(restaurantId);
         RestaurantDTO restaurantDTO = findRestaurantDetailsFromRestaurantMS(restaurantId);
         return createFoodInventoryPage(foodInventoryList, restaurantDTO);
@@ -47,12 +47,12 @@ public class FoodInventoryService {
 
     private FoodInventoryPage createFoodInventoryPage(List<FoodInventory> foodItemList, RestaurantDTO restaurantDTO) {
         FoodInventoryPage foodInventoryPage = new FoodInventoryPage();
-        foodInventoryPage.setFoodItemsList(foodItemList.stream().map(foodInventory -> FoodInventoryMapper.INSTANCE.mapFoodInventoryToFoodInventoryDto(foodInventory)).collect(Collectors.toList()));
+        foodInventoryPage.setFoodInventoryList(foodItemList.stream().map(foodInventory -> FoodInventoryMapper.INSTANCE.mapFoodInventoryToFoodInventoryDto(foodInventory)).collect(Collectors.toList()));
         foodInventoryPage.setRestaurantDTO(restaurantDTO);
         return foodInventoryPage;
     }
 
-    private RestaurantDTO findRestaurantDetailsFromRestaurantMS(Integer restaurantId) {
+    private RestaurantDTO findRestaurantDetailsFromRestaurantMS(Long restaurantId) {
         return restTemplate.getForObject(restaurantOnboardingUrl+"/restaurant/getById/"+restaurantId, RestaurantDTO.class);
     }
 }

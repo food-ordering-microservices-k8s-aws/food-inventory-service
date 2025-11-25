@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * Date: 18/11/25
  */
 
+@CrossOrigin
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/foodInventory")
@@ -27,7 +28,7 @@ public class FoodInventoryController {
     }
 
     @GetMapping("/findRestaurantAndFoodInventoryById/{restaurantId}")
-    public ResponseEntity<FoodInventoryPage> fetchRestauDetailsWithFoodMenu(@PathVariable Integer restaurantId){
+    public ResponseEntity<FoodInventoryPage> fetchRestauDetailsWithFoodMenu(@PathVariable Long restaurantId){
         FoodInventoryPage foodInventoryPage = foodCatalogueService.findFoodInventoryPageDetails(restaurantId);
         return new ResponseEntity<>(foodInventoryPage, HttpStatus.OK);
 

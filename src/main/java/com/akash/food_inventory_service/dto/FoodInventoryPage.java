@@ -17,6 +17,6 @@ import java.util.List;
 @AllArgsConstructor
 public class FoodInventoryPage {
 
-    private List<FoodInventoryDTO> foodItemsList;
+    private List<FoodInventoryDTO> foodInventoryList;
     private RestaurantDTO restaurantDTO;
 }
