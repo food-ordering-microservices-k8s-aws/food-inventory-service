@@ -99,4 +99,20 @@
 		</plugins>
 	</build>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.active.profile>dev</spring.active.profile>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
+        <profile>
+            <id>local</id>
+            <properties>
+                <spring.active.profile>local</spring.active.profile>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>

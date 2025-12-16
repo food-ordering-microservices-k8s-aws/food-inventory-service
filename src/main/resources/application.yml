@@ -4,10 +4,9 @@ server:
 spring:
   application:
     name: food-inventory-service
+  profiles:
+    active: '@spring.active.profile@'
   datasource:
-    url: jdbc:mysql://localhost:3308/foodinventorydb
-    password: root
-    username: root
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
